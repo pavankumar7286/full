@@ -1,0 +1,21 @@
+import pandas as pd
+
+# Sample dataset
+data = {
+    "OrderID": [1,2,3,4,5,6,7,8],
+    "Region": ["North","South","East","West","North","South","East","West"],
+    "ProductCategory": ["Electronics","Furniture","Electronics","Clothing",
+                        "Furniture","Clothing","Electronics","Furniture"],
+    "Sales": [1200,800,1500,600,700,400,900,1100]
+}
+
+df = pd.DataFrame(data)
+
+# Group by Region
+region_sales = df.groupby("Region")["Sales"].sum().reset_index()
+
+# Group by Product Category
+category_sales = df.groupby("ProductCategory")["Sales"].sum().reset_index()
+
+print("Sales by Region:\n", region_sales)
+print("\nSales by Product Category:\n", category_sales)
